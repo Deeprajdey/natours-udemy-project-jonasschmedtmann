@@ -5,9 +5,7 @@ import { loadStripe } from "@stripe/stripe-js";
 
 export const bookTour = async (tourId) => {
   try {
-    const stripe = await loadStripe(
-      "pk_test_JYSX8eIuJ1UErqRPcCcJn2sY00kMVKwlwz"
-    );
+    const stripe = await loadStripe(process.env.STRIPE_PUBLIC_KEY);
     // 1) Get checkout session from API
     const session = await axios(
       `http://127.0.0.1:3000/api/v1/bookings/checkout-session/${tourId}`
